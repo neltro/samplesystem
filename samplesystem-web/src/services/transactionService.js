@@ -28,6 +28,7 @@ export const transferFunds = async (props) => {
         const result = await axios.post(url,payload);
         return result.data;
     } catch (err){
+        console.log(err);
         return {
             success: false,
             msg: err

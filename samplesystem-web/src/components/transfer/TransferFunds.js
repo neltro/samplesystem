@@ -29,8 +29,14 @@ export const TransferFunds = (props) => {
             props.closeModalHandler();
         }
     }
+    const resetInputEntries = () => {
+        setToAccountNo('');
+        setDescription('');
+        setAmount('');
+    }
     useEffect(() => {
         setErrors([]);
+        resetInputEntries();
         getAccount(state.accounts, state.accountNo).then(acct => {
             if (acct){
                 setCurrency(acct.currency);
@@ -58,7 +64,8 @@ export const TransferFunds = (props) => {
                     <select id="toAccountNo"
                             name="toAccountNo" 
                             className="form-control"
-                            onChange={e => setToAccountNo(e.target.value)} >
+                            onChange={e => setToAccountNo(e.target.value)} 
+                            value={toAccountNo}>
                         <option>{constants.transfer.modal.fieldTitles.chooseAccount}</option>
                         {
                             state.accounts && 
@@ -86,6 +93,7 @@ export const TransferFunds = (props) => {
                        className="form-control" 
                        id="description" 
                        placeholder="Description"
+                       value={description}
                        onChange={e => setDescription(e.target.value)}/>
                 <ErrorMessage 
                     errors={errors}
@@ -111,6 +119,7 @@ export const TransferFunds = (props) => {
                            id="amount"
                            min="1"
                            max="1000000000"
+                           value={amount}
                            onChange={e => setAmount(e.target.value)}
                            />
                     <ErrorMessage 

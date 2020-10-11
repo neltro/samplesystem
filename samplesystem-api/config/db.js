@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-const config = require('./default.json');
-
-const db = config.mongoURL;
+const db = require('./default.json').mongoURL;
 
 const connectDB = async() => {
     try{
