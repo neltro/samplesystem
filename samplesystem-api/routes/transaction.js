@@ -1,6 +1,6 @@
-import express from 'express';
-import { check, validationResult } from 'express-validator';
-import { getTransactions, addTransaction } from '../services/transactionService';
+const express = require('express');
+const { check, validationResult } = require('express-validator');
+const { getTransactions, addTransaction } = require('../services/transactionService');
 
 const router = express.Router();
 
@@ -53,4 +53,4 @@ async (req,res) => {
     }
 });
 
-export default router;
+module.exports = router;

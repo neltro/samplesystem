@@ -1,8 +1,8 @@
-import { v4 as uuidv4 } from 'uuid';
-import { Account } from '../models/Account';
-import { Transaction } from '../models/Transaction';
+const { v4 } = require('uuid');
+const { Account } = require('../models/Account');
+const { Transaction } = require('../models/Transaction');
 
-export const getTransactions = async (accountno) => {
+const getTransactions = async (accountno) => {
     const transactions = await Transaction.find({ accountNo: accountno });
     if (transactions){
         const list = transactions.map(tran => {
@@ -29,7 +29,7 @@ export const getTransactions = async (accountno) => {
     }
 }
 
-export const addTransaction = async (transaction) => {
+const addTransaction = async (transaction) => {
     try {
         const { accountNo, toAccountNo, description, amount, currency } = transaction;
         if (accountNo && toAccountNo && description && amount && currency){
@@ -82,7 +82,7 @@ export const addTransaction = async (transaction) => {
     }
 }
 
-export const checkBalance = (balance, amount) => {
+const checkBalance = (balance, amount) => {
     if (balance < amount){
         return {
             success: false,
@@ -119,3 +119,8 @@ const updateAccounts = async (accountNo, toAccountNo, amount) => {
         }
     }
 }
+
+module.exports = getTransactions;
+module.exports = addTransaction;
+module.exports = checkBalance;
+module.exports = updateAccounts;

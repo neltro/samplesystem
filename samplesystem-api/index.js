@@ -1,9 +1,9 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import { connectDB } from './config/db';
-import accountRoute from './routes/account';
-import transactionRoute from './routes/transaction';
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const connectDB = require('./config/db');
+const accountRoute = require('./routes/account');
+const transactionRoute = require('./routes/transaction');
 
 const app = express();
 const PORT = 5001;

@@ -1,6 +1,6 @@
-import { Account } from '../models/Account';
+const { Account } = require('../models/Account');
 
-export const getAccount = async (accountNo) => {
+const getAccount = async (accountNo) => {
     const account = await Account.findOne({ accountNo: accountNo });
     if (account){
         return {
@@ -22,7 +22,7 @@ export const getAccount = async (accountNo) => {
     }
 }
 
-export const checkbalance = async (accountNo) => {
+const checkbalance = async (accountNo) => {
     const account = await Account.findOne({ accountNo: accountNo });
     if (account){
         return {
@@ -41,7 +41,7 @@ export const checkbalance = async (accountNo) => {
     }
 }
 
-export const getAllAccount = async (isNames=false) => {
+const getAllAccount = async (isNames=false) => {
     const accounts = await Account.find();
     if (accounts){
         let list = accounts.map(acct => {
@@ -73,7 +73,7 @@ export const getAllAccount = async (isNames=false) => {
     }
 }
 
-export const addAccount = async (account) => {
+const addAccount = async (account) => {
     try {
         const { accountNo, name, balance, currency} = account;
         if (accountNo && name && balance && currency){
@@ -117,3 +117,8 @@ export const addAccount = async (account) => {
         }
     }
 }
+
+module.exports = getAccount;
+module.exports = checkbalance;
+module.exports = getAllAccount;
+module.exports = addAccount;

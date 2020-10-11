@@ -1,9 +1,9 @@
-import mongoose from 'mongoose';
-import config from './default.json'
+const mongoose = require('mongoose');
+const config = require('./default.json');
 
 const db = config.mongoURL;
 
-export const connectDB = async() => {
+const connectDB = async() => {
     try{
         await mongoose.connect(db, { 
             useUnifiedTopology: true, 
@@ -14,3 +14,4 @@ export const connectDB = async() => {
         console.log(err.message);
     }
 }
+module.exports = connectDB;

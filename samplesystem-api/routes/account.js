@@ -1,7 +1,7 @@
-import express from 'express';
-import { check, validationResult } from 'express-validator';
-import { getAccount, addAccount, getAllAccount } from '../services/accountService';
-import { Account } from '../models/Account';
+const express = require('express');
+const { check, validationResult } = require('express-validator');
+const { getAccount, addAccount, getAllAccount } = require('../services/accountService');
+const { Account } = require('../models/Account');
 
 const router = express.Router();
 
@@ -81,4 +81,4 @@ async (req,res) => {
     }
 });
 
-export default router;
+module.exports = router;
