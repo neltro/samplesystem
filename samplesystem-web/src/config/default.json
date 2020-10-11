@@ -1,0 +1,6 @@
+{
+    "sampleSystemAPI": {
+        "transaction": "http://localhost:5001/api/transaction",
+        "account": "http://localhost:5001/api/account"
+    }
+}
